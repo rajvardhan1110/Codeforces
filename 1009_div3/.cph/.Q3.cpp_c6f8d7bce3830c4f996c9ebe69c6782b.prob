@@ -1,0 +1,1 @@
+{"name":"Local: Q3","url":"/home/rajvardhan/codeforces/1009_div3/Q3.cpp","tests":[{"id":1741706732158,"input":"7\n11\n2\n6\n3\n69\n4\n420\n","output":"3\n-1\n5\n-1\n66\n-1\n320\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/rajvardhan/codeforces/1009_div3/Q3.cpp","group":"local","local":true}
