@@ -49,14 +49,50 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    vector<ll> ch(n,0);
+
+    for(ll i = n-1; i>=0; i--){
+        ll num = i+1;
+        ll curr = i+1;
+
+        ll number = arr[i];
+
+        ll maxi = 0;
+
+        while(num + curr <= n){
+            num += curr;
+
+            if(arr[i] < arr[num-1]){
+                maxi = max(maxi,ch[num-1]);
+            }
+            
+        }
+
+        ch[i] = maxi+1;
+
+    }
+
+    ll sol = 0;
+
+    for(ll i =0; i<n; i++){
+        sol = max(sol,ch[i]);
+    }
+
+    cout<<sol<<endl;
 }

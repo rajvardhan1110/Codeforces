@@ -1,0 +1,1 @@
+{"name":"Local: BoxFitting","url":"/home/rajvardhan/codeforces/rating_wise_question/1300/BoxFitting.cpp","tests":[{"id":1751525103275,"input":"2\n5 16\n1 2 8 4 8\n6 10\n2 8 8 2 2 8\n","output":"2\n3\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/rajvardhan/codeforces/rating_wise_question/1300/BoxFitting.cpp","group":"local","local":true}

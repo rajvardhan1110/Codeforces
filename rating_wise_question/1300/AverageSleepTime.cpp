@@ -57,6 +57,38 @@ int main() {
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n,k;
+    cin>>n>>k;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    ll totalsum = 0;
+    ll sum = 0;
+
+    for(ll i =0; i<k; i++){
+        sum += arr[i];
+    }
+
+    totalsum += sum;
+
+    ll l = 0;
+    ll r = k;
+
+    while(r < n){
+        sum -= arr[l];
+        l++;
+        sum += arr[r];
+        r++;
+
+        totalsum += sum;
+    }
+
+    double a = totalsum;
+    double b = n-k+1;
+    double result = a / b;
+
+    cout << fixed << setprecision(6) << result << endl;
 }

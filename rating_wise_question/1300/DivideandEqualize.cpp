@@ -33,6 +33,20 @@ bool PowOfTwo(ll n) {
     return n > 0 && (n & (n - 1)) == 0;
 }
 
+
+
+void primeFactors(long long n,map<ll,ll>& mp) {
+    // vector<long long> factors;
+    for (long long i = 2; i * i <= n; i++) {
+        while (n % i == 0) {
+            mp[i]++;
+            n /= i;
+        }
+    }
+    if (n > 1) mp[n]++; 
+} 
+
+
 ll binExpRecur(ll a, ll b) {
     if (b == 0) return 1;
     ll res = binExpRecur(a, b / 2);
@@ -49,14 +63,33 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    map<ll,ll> mp;
+    for(ll i=0; i<n; i++){
+        primeFactors(arr[i],mp);
+    }
+
+    for(auto i:mp){
+        if(i.second % n != 0){
+            cout<<"NO"<<endl;
+            return;
+        }
+    }
+
+    cout<<"YES"<<endl;
 }

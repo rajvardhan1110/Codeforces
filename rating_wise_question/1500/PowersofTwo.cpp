@@ -57,6 +57,53 @@ int main() {
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> arr(n);
+
+    inputV(arr,n);
+
+    map<ll,ll> mp;
+
+    vector<ll> num;
+
+    ll number = 1;
+
+    while(number <= 1e18){
+        num.push_back(number);
+
+        number = number<<1;
+    }
+
+    // printV(num);
+
+    ll ans = 0;
+
+    for(ll i = 0; i<n; i++){
+        mp[arr[i]]++;
+    }
+
+     for (auto i: mp) {
+        ll x = i.first;
+        ll totalxcnt = i.second;
+        for (ll power : num) {
+            ll y = power - x;
+
+            if (mp.count(y)) {
+                if (x == y) {
+                    
+                    ans += (totalxcnt * (totalxcnt - 1)) / 2;
+                } else if (x < y) {
+                   
+                    ans += totalxcnt * mp[y];
+                }
+            }
+        }
+    }
+
+    cout << ans << endl;
+
 }

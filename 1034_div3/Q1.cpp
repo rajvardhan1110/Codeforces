@@ -49,14 +49,30 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+
+    ll n;
+    cin>>n;
+
+    map<ll,ll> mp;
+
+    for(ll i =0; i<n; i++){
+        mp[i%4]++;
+    }
+
+    if((mp[0] != mp[3]) || (mp[1] != mp[2])){
+        cout<<"Alice"<<endl;
+    }else{
+        cout<<"Bob"<<endl;
+    }
+
 }

@@ -49,14 +49,41 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n,m;
+    cin>>n>>m;
+
+    vector<ll> a(n-1);
+    vector<ll> b(n);
+
+    inputV(a,n-1);
+    inputV(b,n);
+
+    a.push_back(1);
+
+    sort(a.begin(),a.end());
+    sort(b.begin(),b.end());
+
+    ll i =0;
+    ll j = 0;
+
+    while(i < n && j < n){
+        if(a[i] < b[j]){
+            i++;
+            j++;
+        }else{
+            j++;
+        }
+    }
+
+    cout<<n-i<<endl;
 }

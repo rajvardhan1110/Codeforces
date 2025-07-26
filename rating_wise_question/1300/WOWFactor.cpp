@@ -49,7 +49,7 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
+    int t=1;
     // cin >> t;
     while (t--) {
         solve();
@@ -57,6 +57,28 @@ int main() {
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    string s;
+    cin >> s;
+    ll n = s.size();
+
+    vector<ll> pre(n, 0);
+    for (ll i = 1; i < n; i++) {
+        pre[i] = pre[i - 1];
+        if (s[i] == 'v' && s[i - 1] == 'v') {
+            pre[i]++;
+        }
+    }
+
+    ll ans = 0;
+    for (ll i = 0; i < n; i++) {
+        if (s[i] == 'o') {
+            ll left = pre[i];
+            ll right = pre[n - 1] - pre[i];
+            ans += left * right;
+        }
+    }
+
+    cout << ans << endl;
 }

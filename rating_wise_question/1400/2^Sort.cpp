@@ -49,14 +49,53 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n,k;
+    cin>>n>>k;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    vector<ll> check(n,1);
+    vector<ll> presum(n,0);
+
+    for(ll i = 0; i<n-1; i++){
+        if(arr[i]>=2*arr[i+1]){
+            check[i] = 0;
+        }
+    }
+
+    presum[n-1] = 1;
+
+    for(ll i = n-2; i>=0; i--){
+        if(check[i] != 0){
+            if(check[i+1] == 0){
+                presum[i] = 2;
+            }else{
+                presum[i] = presum[i+1]+1;
+            }
+        }
+    }
+
+    // printV(presum);
+
+    ll ans = 0;
+
+    for(ll i =0; i<n; i++){
+        if(presum[i] >= k+1){
+            ans++;
+        }
+    }
+
+    cout<<ans<<endl;
+
 }

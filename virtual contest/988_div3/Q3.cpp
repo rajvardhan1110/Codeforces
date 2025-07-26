@@ -4,6 +4,8 @@ using namespace std;
 using ll = long long;
 constexpr ll MOD = 1000000007; // 1e9 + 7
 
+// vector<ll> prime(1e7);
+
 void inputV(vector<ll> &v, int size) {
     v.resize(size);
     for (int i = 0; i < size; i++) {
@@ -49,14 +51,53 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
+    // createsieve(prime,1e7);
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> odd;
+    vector<ll> even;
+
+    if(n<=4){
+        cout<<-1<<endl;
+        return;
+    }
+
+    for(ll i =1; i<=n; i++){
+        if(i % 2 == 0){
+            even.push_back(i);
+        }else{
+            odd.push_back(i);
+        }
+    }
+
+    vector<ll> ans;
+
+    for(ll i =0; i<odd.size(); i++){
+        if(odd[i] != 5){
+            ans.push_back(odd[i]);
+        }
+    }
+
+    ans.push_back(5);
+    ans.push_back(4);
+
+    for(ll i =0; i<even.size(); i++){
+        if(even[i] != 4){
+            ans.push_back(even[i]);
+        }
+    }
+
+    printV(ans);
+
 }

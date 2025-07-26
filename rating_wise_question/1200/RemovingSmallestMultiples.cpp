@@ -49,14 +49,49 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    string s;
+    cin>>s;
+
+    // vector<ll> arr(n);
+    vector<bool> check(n,true);
+    ll ans = 0;
+
+    for(ll i=0; i<n; i++){
+        if(s[i] == '0'){
+            ll num = i+1;
+            ll add = num;
+
+            while(num <= n){
+                if(s[num - 1] == '0' && check[num-1] == true){
+                    ans += add;
+                    check[num-1] = false;
+                    num += add;
+                }else if(s[num - 1] == '0' && check[num-1] == false){
+                    num += add;
+                }else{
+                    break;
+                }
+
+                
+            }
+        }
+
+        // cout<<ans<<endl;
+    }
+
+    cout<<ans<<endl;
+
 }

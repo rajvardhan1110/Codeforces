@@ -49,14 +49,51 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n,k;
+    cin>>n>>k;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    vector<ll> bits(31,0);
+
+    for(ll i = 0; i<n; i++){
+        
+        for(ll j =0; j<31; j++){
+            if((arr[i] & (1<<j)) != 0){
+                bits[j]++;
+            }
+        }
+    }
+
+    for(ll i = 30; i>=0; i--){
+        ll req = n - bits[i];
+
+        if(req <= k){
+            bits[i] = n;
+            k -= req;
+        }
+    }
+
+    ll ans = 0;
+
+    for(ll i = 0; i<31; i++){
+        if(bits[i] == n){
+            ans += (1<<i);
+        }
+    }
+
+    cout<<ans<<endl;
+
+
 }

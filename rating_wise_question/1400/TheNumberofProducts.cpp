@@ -57,6 +57,39 @@ int main() {
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil 
+
+    ll n;
+    cin>>n;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    ll ans = 0;
+    ll cnt1= 0;
+    ll cnt2 = 0;
+
+    ll bal = 0;
+
+    for(ll i =0; i< n;i++){
+        if(bal % 2 == 0){
+            cnt1++;
+        }else{
+            cnt2++;
+        }
+
+        if(arr[i] < 0){
+            bal++;
+        }
+
+
+        if(bal % 2 == 0){
+            ans += cnt1;
+        }else{
+            ans += cnt2;
+        }
+    }
+
+
+    cout<<(1LL*n*(n+1) / 2) - ans <<" "<<ans<<endl;
 }

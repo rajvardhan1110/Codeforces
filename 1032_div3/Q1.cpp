@@ -49,14 +49,45 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n,k;
+    cin>>n>>k;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    ll mini = 0;
+    ll maxi = 0;
+
+    if(arr[0] < k){
+        mini = k - arr[0];
+    }
+
+    if(arr[n-1] > k){
+        maxi = arr[n-1] - k;
+    }
+
+    ll miniplace = min(mini,maxi);
+    ll maxiplace = max(mini,maxi);
+
+    // cout<<2*mini + maxi<<endl;
+
+    if(miniplace == 0){
+        cout<<maxiplace<<endl;
+    }else if(maxiplace == 0){
+        cout<<miniplace<<endl;
+    }else{
+        cout<<2*miniplace + maxiplace<<endl;
+    }
+
+
 }

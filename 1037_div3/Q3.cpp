@@ -49,14 +49,59 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
+    //Rajvardhan Patil
+
+    ll n,k;
+    cin>>n>>k;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    ll currh = arr[k-1];
+    // cout<<currh<<endl;
+
+    sort(arr.begin(), arr.end());
+    set<ll> s(arr.begin(), arr.end());
+
+    
+    auto it = s.lower_bound(currh);
+    s.erase(s.begin(), it);
+
+    vector<ll> d;
+
+    for(auto i:s){
+        // cout<<i<<" ";
+        d.push_back(i);
+    }
+
+    ll currw = 1;
+
+    if(currw > currh){
+        cout<<"NO"<<endl;
+        return;
+    }
+
+    ll lower = currh;
+
+    for(ll i = 0; i<d.size()-1; i++){
+
+        if(d[i+1]-d[i]+currw-1 > d[i]){
+            cout<<"NO"<<endl;
+            return;
+        }
+
+        currw += d[i+1] - d[i];
+    }
+
+    cout<<"YES"<<endl;
+
     
 }

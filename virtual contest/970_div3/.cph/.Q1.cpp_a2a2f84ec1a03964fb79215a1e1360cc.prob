@@ -1,0 +1,1 @@
+{"name":"Local: Q1","url":"/home/rajvardhan/codeforces/virtual contest/970_div3/Q1.cpp","tests":[{"id":1750769059697,"input":"5\n0 1\n0 3\n2 0\n2 3\n3 1\n","output":"NO\nNO\nYES\nYES\nNO\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/rajvardhan/codeforces/virtual contest/970_div3/Q1.cpp","group":"local","local":true}

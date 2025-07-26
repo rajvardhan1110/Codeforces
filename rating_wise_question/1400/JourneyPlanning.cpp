@@ -57,6 +57,35 @@ int main() {
 }
 
 void solve() {
-   
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    map<ll,vector<ll>> mp;
+
+    for(ll i =0; i<n; i++){
+        mp[arr[i] - (i+1)].push_back(i);
+    }
+
+    ll ans = 0;
+
+    for(auto i : mp){
+        // vector<ll> dummy = i.second;
+
+        ll cnt = 0;
+
+        for(auto j:i.second){
+            cnt += arr[j];
+        }
+
+        ans = max(ans,cnt);
+    }
+
+    cout<<ans<<endl;
     
+
 }

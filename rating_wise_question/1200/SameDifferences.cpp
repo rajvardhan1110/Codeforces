@@ -49,14 +49,35 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    map<ll,ll> mp;
+
+    for(ll i=0; i<n; i++){
+        mp[arr[i] - (i+1)]++;
+    }
+
+    ll maxi = 0;
+
+    for(auto i:mp){
+        maxi += i.second*(i.second-1) / 2;
+    }
+
+    // ll ans = maxi*(maxi-1) / 2;
+
+    cout<<maxi<<endl;
 }

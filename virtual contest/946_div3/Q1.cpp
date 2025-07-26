@@ -49,14 +49,51 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
+    //Rajvardhan Patil
+
+    ll a,b;
+    cin>>a>>b;
+
+    ll fora = 0;
+    ll forb= 0;
+
+    forb = (b/2);
+    if(b % 2 != 0){
+        forb++;
+    }
+
+    // cout<<"forb->"<<forb<<endl;
+
     
+    if(b % 2 != 0){
+        fora = (forb-1) * 7;
+        fora += 11;
+    }else{
+        fora = (forb) * 7;
+    }
+
+
+
+    // cout<<"fora->"<<fora<<endl;
+
+    if(a <= fora){
+        cout<<forb<<endl;
+    }else{
+        a -= fora;
+
+        ll extra = a / 15;
+        if(a % 15 != 0){
+            extra++;
+        }
+
+        cout<<forb+extra<<endl;
+    }
 }

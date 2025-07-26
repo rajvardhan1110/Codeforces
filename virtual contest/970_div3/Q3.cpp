@@ -49,14 +49,28 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll l,r;
+    cin>>l>>r;
+
+    ll cnt = 0;
+    ll diff = 1;
+
+    while(l <= r){
+        cnt++;
+        l += diff;
+        diff++;
+    }
+
+    cout<<cnt<<endl;
+
 }

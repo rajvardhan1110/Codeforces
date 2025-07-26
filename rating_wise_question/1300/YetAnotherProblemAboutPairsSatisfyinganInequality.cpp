@@ -49,14 +49,66 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n; 
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    vector<pair<ll,ll>> group;
+
+    for(ll i = 0; i<n; i++){
+        if(arr[i] < (i+1)){
+            group.push_back({arr[i],i+1});
+        }
+    }
+
+    ll ans = 0;
+
+    // for(ll i=0; i<group.size(); i++){
+    //     cout<<group[i].first<<" "<<group[i].second<<endl;
+    // }
+
+    map<ll,ll> mp;
+
+    for(ll i = group.size()-1; i>=0; i--){
+        ll target = group[i].first;
+        // cout<<target<<endl;
+
+        if(mp[target] > 0){
+            ans += mp[target];
+            continue;
+        }
+
+        ll left = 0;
+        ll right = i-1;
+        ll sol = 0;
+
+
+        while(left <= right){
+            ll mid = (left+right) / 2;
+        
+            if(group[mid].second < target){
+                sol = mid+1;
+                left = mid+1;
+            }else{
+                right=mid-1;
+            }
+        }
+        mp[target] = sol;
+
+        ans += sol;
+    }
+
+    cout<<ans<<endl;
 }

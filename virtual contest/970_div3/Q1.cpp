@@ -49,14 +49,29 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+    ll o,t;
+    cin>>o>>t;
+
+
+    t = t % 2;
+
+    if(t > 0 && o > 1){
+        o -= 2;
+        t--;
+    }
+
+    if(o%2 == 0 && t%2 == 0){
+        cout<<"YES"<<endl;
+    }else{
+        cout<<"NO"<<endl;
+    }
 }

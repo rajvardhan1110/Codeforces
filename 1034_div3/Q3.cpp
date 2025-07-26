@@ -49,14 +49,60 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> arr(n);
+
+    inputV(arr,n);
+
+    ll minIndex = 0, maxIndex = n-1;
+    vector<ll> suff(n);
+    vector<ll> pref(n);
+
+    pref[0] = arr[0];
+    suff[n-1] = arr[n-1];
+
+    for (ll i = 1; i < n; ++i) {
+        if (arr[i] < arr[minIndex]) {
+            minIndex = i;
+        }
+        
+        pref[i] = arr[minIndex];
+        
+    }
+
+    for(ll i=n-2; i>=0; i--){
+        if(arr[i] > arr[maxIndex]){
+            maxIndex = i;
+        }
+
+        suff[i] = arr[maxIndex];
+    }
+
+
+
+    string ans = "";
+
+    for(ll i =0; i<n; i++){
+        if(arr[i]==suff[i] || arr[i] == pref[i]){
+            ans += '1';
+        }else{
+            ans += '0';
+        }
+    }
+
+    cout<<ans<<endl;
+
+
 }

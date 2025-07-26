@@ -49,14 +49,45 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    string s;
+    cin>>s;
+
+    set<char> se;
+
+    string unique = "";
+
+    for(auto i:s){
+        se.insert(i);
+    }
+
+    for(auto i:se){
+        unique += i;
+    }
+
+    map<char,char> mp;
+
+    for(ll i=0; i<unique.size(); i++){
+        mp[unique[i]] = unique[unique.size()-i-1];
+    }
+
+    string ans = "";
+
+    for(auto i : s){
+        ans += mp[i];
+    }
+
+    cout<<ans<<endl;
 }

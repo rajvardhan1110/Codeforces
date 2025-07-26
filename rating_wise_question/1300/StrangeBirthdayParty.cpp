@@ -49,14 +49,52 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n,m;
+    cin>>n>>m;
+
+    vector<ll> arr(n);
+    vector<ll> b(m);
+
+    inputV(arr,n);
+    inputV(b,m);
+
+    sort(arr.rbegin(),arr.rend());
+
+    for(int i=0; i<n; i++){
+        arr[i]--;
+    }
+
+    // printV(arr);
+
+    ll ind = 0;
+    ll ans = 0;
+
+    for(ll i = 0; i<n; i++){
+        if(ind <= arr[i]){
+
+            if(b[ind] < b[arr[i]]){
+                ans += b[ind];
+                ind++;
+            }else{
+                ans += b[arr[i]];
+            }
+
+        }else{
+            ans += b[arr[i]];
+        }
+    }
+
+    cout<<ans<<endl;
+
+
 }

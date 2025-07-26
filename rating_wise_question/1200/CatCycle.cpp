@@ -49,14 +49,50 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n,k;
+    cin>>n>>k;
+
+    if(n % 2 == 0){
+        
+
+        if(k % n == 0){
+            cout<<n<<endl;
+        }else{
+            cout<<k % n<<endl;
+        }
+    }else{
+        ll baki = n / 2;
+
+        if(k % baki == 0){
+            ll num = k / baki;
+            ll ans = (baki*(num-1)) + (num-1) + baki;
+            
+
+            if(ans % n == 0){
+                cout<<n<<endl;
+            }else{
+                cout<<ans % n<<endl;
+            }
+        }else{
+            ll num = k / baki;
+            ll rem = k % baki;
+            
+            ll ans = (baki*num) + num + rem;
+            if(ans % n == 0){
+                cout<<n<<endl;
+            }else{
+                cout<<ans % n<<endl;
+            }
+        }
+    }
 }

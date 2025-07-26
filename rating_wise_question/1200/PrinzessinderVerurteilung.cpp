@@ -43,20 +43,59 @@ ll binExpRecur(ll a, ll b) {
     }
 }
 
+
+
+string nextString(string s) {
+    int i = s.size() - 1;
+
+    
+    while (i >= 0 && s[i] == 'z') {
+        s[i] = 'a';
+        i--;
+    }
+
+    if (i >= 0) {
+        s[i]++;
+    } else {
+       
+        s = 'a' + s;
+    }
+
+    return s;
+}
+
+
 void solve();
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    string s;
+
+    cin>>s;
+
+    string a = "a";
+
+    while(1){
+        if(s.find(a) == string::npos){
+            cout<<a<<endl;
+            return;
+        }else{
+            a = nextString(a);
+        }
+    }
 }

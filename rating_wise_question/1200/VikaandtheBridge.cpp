@@ -49,14 +49,60 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n,k;
+    cin>>n>>k;
+
+    vector<ll> arr(n);
+
+    inputV(arr,n);
+
+    ll ans = INT_MAX;
+
+    map<ll,vector<ll>> mp;
+
+    for(ll i = 0; i<n; i++){
+        mp[arr[i]].push_back(i);
+    }
+
+    for(auto i : mp){
+        vector<ll> dummy = i.second;
+        vector<ll> check;
+
+        // printV(dummy);
+
+        for(int j=0; j<dummy.size(); j++){
+            if(j == 0){
+                check.push_back(dummy[j]);
+            }else{
+                check.push_back(dummy[j] - dummy[j-1] - 1);
+            }
+        }
+
+        check.push_back(arr.size()-1-dummy[dummy.size()-1]);
+
+        // cout<<i.first<<endl;
+        // printV(check);
+
+        ll lastindex = check.size() - 1;
+
+        sort(check.begin(),check.end());
+
+        ll S = max(check[lastindex] / 2,check[lastindex-1]);
+
+        ans = min(ans,S);
+
+        // cout<<ans<<endl;
+    }
+
+    cout<<ans<<endl;
 }

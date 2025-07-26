@@ -49,14 +49,57 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> a(n);
+    vector<ll> b(n);
+    inputV(a,n);
+    inputV(b,n);
+
+    vector<pair<ll,ll>> c(n);
+
+    for(ll i =0; i<n; i++){
+        c[i] = {a[i]-b[i],i+1};
+    }
+
+    vector<ll> ans;
+
+    sort(c.begin(),c.end(),[](pair<ll,ll>&a,pair<ll,ll> &b){
+        if(a.first == b.first){
+            return a.second < b.second;
+        }
+
+        return a.first > b.first;
+    });
+
+    ans.push_back(c[0].second);
+
+    for(ll i = 1; i<n; i++){
+        if(c[i].first == c[0].first){
+            ans.push_back(c[i].second);
+        }else{
+            break;
+        }
+    }
+
+    cout<<ans.size()<<endl;
+
+    for(auto i:ans){
+        cout<<i<<" ";
+    }
+
+    cout<<endl;
+
+
 }

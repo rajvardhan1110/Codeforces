@@ -43,20 +43,53 @@ ll binExpRecur(ll a, ll b) {
     }
 }
 
+bool solve2(ll mid,ll row,ll col,ll stu){
+    ll remc = col / (mid+1);
+    ll total = col - remc;
+
+    ll totalstu = total * row;
+
+    if(totalstu >= stu){
+        return true;
+    }
+
+    return false;
+}
+
 void solve();
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll r,c,s;
+    cin>>r>>c>>s;
+
+    ll mini = 1;
+    ll maxi = c;
+
+    ll ans = -1;
+
+    while(mini <= maxi){
+        ll mid = (mini+maxi) / 2;
+
+        if(solve2(mid,r,c,s)){
+            ans = mid;
+            maxi =mid -1;
+        }else{
+            mini = mid+1;
+        }
+    }
+
+    cout<<ans<<endl;
 }

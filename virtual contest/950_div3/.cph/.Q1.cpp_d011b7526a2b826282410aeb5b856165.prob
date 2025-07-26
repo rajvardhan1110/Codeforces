@@ -1,0 +1,1 @@
+{"name":"Local: Q1","url":"/home/rajvardhan/codeforces/virtual contest/950_div3/Q1.cpp","tests":[{"id":1750942547641,"input":"3\n10 1\nBGECDCBDED\n10 2\nBGECDCBDED\n9 1\nBBCDEFFGG\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/rajvardhan/codeforces/virtual contest/950_div3/Q1.cpp","group":"local","local":true}

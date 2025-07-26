@@ -49,14 +49,37 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n,k;
+    cin>>n>>k;
+
+    string s;
+    cin>>s;
+
+    ll one = 0;
+
+    for(auto i:s){
+        if(i == '1'){
+            one++;
+        }
+    }
+
+    if(one <= k){
+        cout<<"Alice"<<endl;
+    }else{
+        if(k*2 <= n){
+            cout<<"Bob"<<endl;
+        }else{
+            cout<<"Alice"<<endl;
+        }
+    }
 }

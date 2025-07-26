@@ -49,14 +49,28 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n; 
+    ll prime = n;
+    for(ll i =2; i*i <= n; i++){
+        if(n % i == 0){
+            prime = i;
+            break;
+        }
+    }
+
+    ll smallnum = n/prime;
+    ll bignum = n-smallnum;
+
+    cout<<smallnum<<" "<<bignum<<endl;
 }

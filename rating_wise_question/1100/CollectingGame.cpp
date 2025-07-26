@@ -49,14 +49,62 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> arr(n);
+    // inputV(arr,n);
+
+    vector<pair<ll,ll>> pa(n);
+
+    for(ll i = 0; i<n; i++){
+        cin>>arr[i];
+
+        pa[i] = {arr[i],i};
+    }
+
+    sort(pa.begin(),pa.end());
+
+    vector<ll> addi(n);
+    addi[0] = pa[0].first;
+
+    for(ll i = 1; i<n; i++){
+        addi[i] = pa[i].first + addi[i-1];
+    }
+
+    vector<ll> ans(n);
+
+    for(ll i=0; i<n; i++){
+        ll found = i;
+        ll j = i;
+
+        while(j < n){
+            pair<ll,ll> temp = {addi[j]+1,INT_MIN};
+            ll ind = lower_bound(pa.begin(),pa.end(),temp) - pa.begin();
+            ind--;
+
+            if(ind == j){
+                break;
+
+            }
+
+
+            found += ind - j;
+            j = ind;
+        }
+
+        ans[pa[i].second] = found;
+    }
+
+    printV(ans);
 }

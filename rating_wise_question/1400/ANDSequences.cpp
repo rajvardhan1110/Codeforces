@@ -49,14 +49,54 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    ll mini = *min_element(arr.begin(),arr.end());
+
+    ll check = mini;
+
+    ll cnt = 0;
+
+    for(ll i =0; i<n; i++){
+        if(arr[i] == mini){
+            cnt++;
+        }else{
+            check &= arr[i];
+        }
+    }
+
+    if(check != mini){
+        cout<<0<<endl;
+        return;
+    }
+
+    ll ans = 0;
+
+    ll f = 1;
+
+    for(ll i =1; i<=n-2; i++){
+        f = (f*i) %MOD;
+    }
+
+    ll mincnt = (cnt*(cnt-1)) % MOD;
+
+    ans = (((1LL * f)%MOD) * mincnt) % MOD;
+
+    cout<<ans<<endl;
+
+
 }

@@ -43,20 +43,65 @@ ll binExpRecur(ll a, ll b) {
     }
 }
 
+// void solve2(string s,unordered_set<string>& se){
+//     if(s.empty() || se.count(s)){
+//         return;
+//     }
+
+//     se.insert(s);
+
+//     //first remove
+//     if(s.size() >= 1){
+//         solve2(s.substr(1),se);
+//     }
+
+
+//     //sec remove
+
+//     if(s.size() >= 2){
+//         solve2(s[0] + s.substr(2),se);
+//     }
+// }
+
 void solve();
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n; 
+
+    string s;
+    cin>>s;
+
+    unordered_set<char> se;
+    // // se.insert(s.begin(),s.end());
+
+    // // vector<vector<int>> dp(n,vector<int> (n,-1));
+
+    // solve2(s,se);
+
+    // cout<< se.size() << endl;
+
+    ll ans  = 1;
+    se.insert(s[0]);
+
+    for(ll i = 1; i<n; i++){
+        se.insert(s[i]);
+
+        ans += se.size();
+    }
+
+    cout<<ans<<endl;
 }

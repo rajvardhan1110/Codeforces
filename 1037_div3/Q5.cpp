@@ -49,14 +49,71 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+
+    vector<ll> p(n);
+    vector<ll> s(n);
+
+    inputV(p,n);
+    inputV(s,n);
+
+
+
+
+
+    if(s[0] != p[n-1]){
+        cout<<"NO"<<endl;
+        return;
+    }
+
+
+    // for(ll i = 0; i<n; i++){
+    //     if(__gcd(p[i],s[i]) != s[0]){
+    //         cout<<"NO"<<endl;
+    //         return;
+    //     }
+    // }
+
+    for(ll i = n-1; i>0; i--){
+        if(p[i-1] % p[i] != 0){
+            cout<<"NO"<<endl;
+            return;
+        }
+    }
+
+    for(ll i =0; i<n-1; i++){
+        if(s[i+1] % s[i] != 0){
+            cout<<"NO"<<endl;
+            return;
+        }
+    }
+
+
+    for(ll i =0; i<n-1; i++){
+        if(__gcd(s[i+1],p[i]) != s[0]){
+            cout<<"NO"<<endl;
+            return;
+        }
+    }
+
+    // for(ll i = n-1; i>0; i--){
+    //     if(__gcd(s[i-1] , p[i]) != s[0]){
+    //         cout<<"NO"<<endl;
+    //         return;
+    //     }
+    // }
+
+    cout<<"YES"<<endl;
 }

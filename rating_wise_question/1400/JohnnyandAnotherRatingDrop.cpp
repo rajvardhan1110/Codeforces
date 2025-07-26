@@ -49,14 +49,37 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> sum(66,0);
+    sum[0] = 1;
+
+    for(ll i = 1; i<=66; i++){
+        sum[i] = ((1LL<<i) + sum[i-1]);
+    }
+
+    ll cnt = 0;
+    ll ans = 0;
+
+    while(n > 0){
+        if(n&1){
+            ans += sum[cnt];
+        }
+
+        cnt++;
+        n /= 2;
+    }
+
+    cout<<ans<<endl;
 }

@@ -49,14 +49,33 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n,k,m;
+    cin>>n>>k>>m;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    ll num = arr[k-1];
+
+    sort(arr.begin(),arr.end());
+
+    if(m == 1){
+        if(arr[n-1] == num){
+            cout<<"YES"<<endl;
+        }else{
+            cout<<"NO"<<endl;
+        }
+    }else{
+        cout<<"YES"<<endl;
+    }
 }

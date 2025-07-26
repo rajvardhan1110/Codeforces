@@ -49,14 +49,56 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    ll maxi = *max_element(arr.begin(),arr.end());
+    ll sum = accumulate(arr.begin(),arr.end(),0LL);
+
+    // cout<<maxi<<" "<<sum<<endl;
+
+    if(maxi == 0){
+        cout<<0<<endl;
+        return;
+    }
+
+    if(2*maxi <= sum){
+        cout<<1<<endl;
+
+    }else{
+        cout<<(2*maxi)-sum<<endl;
+    }
+
+//     ll sum = accumulate(arr.begin(),arr.end(),0LL);
+//     ll maxi = *max_element(arr.begin(),arr.end());
+
+
+//     ll rem = sum-maxi;
+
+//     if(rem == 0 && maxi == 0){
+//         cout<<0<<endl;
+//         return;
+//     }
+
+//     if(maxi <= rem){
+//         cout<<1<<endl;
+//     }else{
+//         cout<<maxi-rem<<endl;
+//     }
+// }
+
 }

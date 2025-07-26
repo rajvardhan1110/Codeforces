@@ -49,14 +49,45 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    ll si = n - 2;
+
+    map<ll,ll> mp;
+
+    for(ll i=0; i<n; i++){
+        mp[arr[i]]++;
+    }
+
+    // if(mp[2] > 0){
+    //     cout<<mp[2]<<endl;
+    // }
+
+    for(ll i = 0; i<n; i++){
+        if(si % arr[i] == 0){
+            ll sec = si / arr[i];
+
+            if(sec == arr[i] && mp[sec] >= 2 ){
+                cout<<arr[i]<<" "<<sec<<endl;
+                return;
+            }else if(sec != arr[i] && mp[sec] > 0){
+                cout<<arr[i]<<" "<<sec<<endl;
+                return;
+            }
+        }
+    }
 }

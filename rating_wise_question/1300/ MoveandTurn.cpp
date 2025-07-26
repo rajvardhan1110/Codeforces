@@ -57,6 +57,16 @@ int main() {
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    if(n&1){
+        ll num = n / 2;
+
+        cout<<(2+num)*(2+num-1)*2<<endl;
+    }else{
+        cout<<(n/2 + 1)*(n/2 + 1)<<endl;
+    }
 }

@@ -49,14 +49,38 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n,k;
+    cin>>n>>k;
+
+    string s;
+    cin>>s;
+
+    map<char,ll> mp;
+
+    ll cnt = 0;
+
+    for(auto i:s){
+        mp[i]++;
+    }
+
+    vector<char> arr = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+
+
+    for(auto i: arr){
+        if(mp[i] < k){
+            cnt += k - mp[i];
+        }
+    }
+
+    cout<<cnt<<endl;
 }

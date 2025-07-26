@@ -43,20 +43,62 @@ ll binExpRecur(ll a, ll b) {
     }
 }
 
+bool check(ll t,vector<ll>& w){
+    ll rem1hr = 0;
+    ll remt = 0;
+
+    for(ll i =1; i<w.size(); i++){
+        ll hr1 = min(t,w[i]);
+
+        rem1hr += w[i] - min(t,w[i]);
+        remt += (t-min(t,w[i])) / 2;
+    }
+
+    return remt >= rem1hr;
+}
+
 void solve();
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n,m;
+    cin>>n>>m;
+
+    vector<ll> arr(m);
+    inputV(arr,m);
+
+    vector<ll> worker(n+1,0);
+
+    for(auto i : arr){
+        worker[i]++;
+    }
+
+    ll l = 0;
+    ll r = 2*m;
+    ll ans = -1;
+
+    while(l <= r){
+        ll mid = (l+r)/2;
+
+        if(check(mid,worker)){
+            ans = mid;
+            r = mid-1;
+        }else{
+            l = mid +1;
+        }
+    }
+
+    cout<<ans<<endl;
 }

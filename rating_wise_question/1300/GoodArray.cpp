@@ -49,7 +49,7 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
+    int t=1;
     // cin >> t;
     while (t--) {
         solve();
@@ -57,6 +57,49 @@ int main() {
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    vector<pair<ll,ll>> asce;
+    map<ll,ll> index;
+
+    for(ll i = 0; i<n; i++){
+        asce.push_back({arr[i],i});
+    }
+
+    sort(asce.begin(),asce.end());
+
+    ll sum = accumulate(arr.begin(),arr.end(),0LL);
+
+    vector<ll> ans;
+
+    for(ll i = 0; i<n; i++){
+       ll check = sum - arr[i];
+
+       ll maxi = -1;
+
+       if(arr[i] == asce[asce.size()-1].first){
+            maxi = asce[asce.size()-2].first;
+       }else{
+            maxi = asce[asce.size()-1].first;
+       }
+
+       check -= maxi;
+
+       if(check == maxi){
+        ans.push_back(i+1);
+       }
+    }
+
+    if(ans.size() == 0){
+        cout<<0<<endl;
+    }else{
+        cout<<ans.size()<<endl;
+        printV(ans);
+    }
 }

@@ -49,14 +49,33 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    
+    //Rajvardhan Patil
+
+    ll n,p,op;
+    cin>>n>>p>>op;
+
+    ll l = p;
+    ll r = p;
+
+    while(op--){
+        ll nl;
+        ll nr;
+
+        cin>>nl>>nr;
+
+        if(l <= nr && nl <= r){
+            l =min(l,nl);
+            r = max(r,nr);
+        }
+    }
+
+    cout<<r-l+1<<endl;
 }

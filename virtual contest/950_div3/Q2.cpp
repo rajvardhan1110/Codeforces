@@ -49,14 +49,51 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
+    //Rajvardhan Patil
+
+    ll n,f,k;
+
+    cin>>n>>f>>k;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    f--;
+    k--;
+
+    ll fev = arr[f];
+
+    sort(arr.rbegin(),arr.rend());
    
+
+
+    bool falg = true;
+
     
+
+    if(fev > arr[k]){
+        cout<<"YES"<<endl;
+        return;
+    }else if(fev < arr[k]){
+        cout<<"NO"<<endl;
+        return;
+    }else if(fev == arr[k]){
+        if(k+1 < n){
+            if(fev == arr[k+1]){
+                cout<<"MAYBE"<<endl;
+            }else{
+                cout<<"YES"<<endl;
+            }
+        }else{
+            cout<<"YES"<<endl;
+        }
+    }
 }

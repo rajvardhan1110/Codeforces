@@ -49,14 +49,54 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    string s;
+    cin>>s;
+
+    ll cnt = 0;
+
+    for(auto i:s){
+        if(i == '0'){
+            cnt++;
+        }
+    }
+
+    if(cnt == 1){
+        cout<<"BOB"<<endl;
+        return;
+    }
+
     
+
+    if(cnt % 2 == 0){
+        ll a = cnt / 2;
+
+        if(a % 2 == 0){
+            cout<<"BOB"<<endl;
+        }else{
+            cout<<"BOB"<<endl;
+        }
+    }else{
+        ll a = (cnt-1) / 2;
+
+        // if(a % 2 == 0){
+        //     cout<<"BOB"<<endl;
+        // }else{
+        //     cout<<"ALICE"<<endl;
+        // }
+
+        cout<<"ALICE"<<endl;
+    }
 }

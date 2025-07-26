@@ -49,14 +49,55 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
+    //Rajvardhan Patil
+
+    ll n;
+    cin>>n;
+
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    ll sum = 0;
+
+    ll neg = true;
+
+    // ll total = accumulate(arr.begin(),arr.end(),0);
+    // cout<<total<<endl;
+
+    // vector<ll> prefix(n,0);
+    // vector<ll> suffix(n,0);
+
+    bool first = false;
+    bool last = false;
+
+    ll presum = 0;
+    ll sufsum = 0;
+
+    for(ll i = 0; i<n; i++){
+       presum += arr[i];
+
+       if(presum <= 0){
+        cout<<"NO"<<endl;
+        return;
+       }
+    }
+
+    for(ll i = n-1; i>=0; i--){
+        sufsum += arr[i];
+
+        if(sufsum <= 0){
+            cout<<"NO"<<endl;
+            return;
+        }
+    }
     
+    cout<<"YES"<<endl;
 }
