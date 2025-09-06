@@ -1,61 +1,56 @@
 #include <bits/stdc++.h>
+ 
 using namespace std;
-
-using ll = long long;
-constexpr ll MOD = 1000000007; // 1e9 + 7
-
-void inputV(vector<ll> &v, int size) {
-    v.resize(size);
-    for (int i = 0; i < size; i++) {
-        cin >> v[i];
-    }
+ 
+int query(int i, int j) {
+    cout << "? " << i + 1 << ' ' << j + 1 << endl;
+    int ans;
+    cin >> ans;
+    return ans;
 }
-
-void printV(const vector<ll> &v) {
-    for (ll val : v) {
-        cout << val << " ";
+ 
+int common(pair<int,int> a, pair<int,int> b) {
+    if(a.first == b.first || a.first == b.second) return a.first;
+    else return a.second;
+}
+ 
+int other(pair<int,int> p, int a) {
+    if(p.first == a) return p.second;
+    else return p.first;
+}
+ 
+void solve() {
+    vector<int> arr = {4,8,15,16,23,42};
+    int n = arr.size();
+    map<int,pair<int,int>> m;
+    for(int i = 0; i < n; i++) {
+        for(int j = i + 1; j < n; j++) {
+            m[arr[i] * arr[j]] = {arr[i], arr[j]};
+        }
+    }
+ 
+    vector<int> ans(6);
+    auto p1 = m[query(0,1)];
+    auto p2 = m[query(1,2)];
+    ans[1] = common(p1,p2);
+    ans[0] = other(p1,ans[1]);
+    ans[2] = other(p2,ans[1]);
+    p1 = m[query(3,4)];
+    p2 = m[query(4,5)];
+    ans[4] = common(p1,p2);
+    ans[3] = other(p1, ans[4]);
+    ans[5] = other(p2, ans[4]);
+ 
+    cout << "! ";
+    for(auto x : ans) {
+        cout << x << ' ';
     }
     cout << endl;
 }
-
-void createsieve(vector<bool> &prime, int n) {
-    prime[0] = prime[1] = false;
-    for (int i = 2; i * i < n; i++) {
-        if (prime[i]) {
-            for (int j = i * i; j < n; j += i) {
-                prime[j] = false;
-            }
-        }
-    }
-}
-
-bool PowOfTwo(ll n) {
-    return n > 0 && (n & (n - 1)) == 0;
-}
-
-ll binExpRecur(ll a, ll b) {
-    if (b == 0) return 1;
-    ll res = binExpRecur(a, b / 2);
-    if (b & 1) {
-        return (a * ((res * res) % MOD)) % MOD;
-    } else {
-        return (res * res) % MOD;
-    }
-}
-
-void solve();
-
+ 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int t;
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+    solve();
 }
-
-void solve() {
-    //Rajvardhan Patil
-}
+ 
+// TC: O(1)
+// SC: O(1)

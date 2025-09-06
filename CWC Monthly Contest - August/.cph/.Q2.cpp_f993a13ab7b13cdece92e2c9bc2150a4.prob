@@ -1,0 +1,1 @@
+{"name":"Local: Q2","url":"/home/rajvardhan/codeforces/CWC Monthly Contest - August/Q2.cpp","tests":[{"id":1754664681618,"input":"2\n5\n7 2 5 9 3\n4\n4 4 4 4\n","output":"14 11 12 0 10\n0 0 0 0\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/rajvardhan/codeforces/CWC Monthly Contest - August/Q2.cpp","group":"local","local":true}
