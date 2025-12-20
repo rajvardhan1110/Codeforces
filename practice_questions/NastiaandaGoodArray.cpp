@@ -49,34 +49,46 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    // Rajvardhan Patil 
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    int n;
+    cin >> n;
 
-    Xor[1] = 1;
-    Or[1] = 1;
+    vector<ll> a;
+    inputV(a, n);
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
-    }
-
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
-    }
-
-
+    ll largePrime = 1000000007LL; 
 
     
+    cout << n - 1 << endl;
+
+    for (int i = 0; i < n - 1; i++) {
+        ll mn = min(a[i], a[i + 1]);
+
+        if(i%2 == 0){
+            cout << i + 1 << " " << i + 2 << " " << mn << " " << largePrime << endl;
+        }else{
+            cout << i + 1 << " " << i + 2 << " " << largePrime << " " << mn << endl;
+        }
+        
+
+        if(i%2 == 0){
+            a[i] = mn;
+            a[i + 1] = largePrime;
+        }else{
+            a[i] = largePrime;
+            a[i + 1] = mn;
+        }
+        
+    }
+
+    // printV(a);
 }

@@ -49,31 +49,70 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    //Rajvardhan Patil
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    ll n,k;
+    cin>>n>>k;
 
-    Xor[1] = 1;
-    Or[1] = 1;
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    vector<ll> arr(n);
+    inputV(arr,n);
+
+    ll ind1 = 0;
+    ll ind2 = n-1;
+
+    ll cnt1 = 0;
+    ll cnt2 = 0;
+    
+
+    ll i = 0;
+
+    while(cnt1 < k && i<n){
+        if(arr[i] == arr[0]){
+            cnt1++;
+            ind1 = i;
+        }
+
+        i++;
     }
 
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
+    if(cnt1 < k){
+        cout<<"NO"<<endl;
+        return;
+    }
+
+    i = n-1;
+
+    while(cnt2 < k && i >= 0){
+        if(arr[i] == arr[n-1]){
+            cnt2++;
+            ind2 = i;
+        }
+
+        i--;
+    }
+
+    if(cnt2 < k){
+        cout<<"NO"<<endl;
+        return;
+    }
+
+    if(ind1 < ind2){
+        cout<<"YES"<<endl;
+    }else{
+        if(arr[0] == arr[n-1]){
+            cout<<"YES"<<endl;
+        }else{
+            cout<<"NO"<<endl;
+        }
     }
 
 

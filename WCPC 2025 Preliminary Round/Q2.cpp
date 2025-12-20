@@ -57,26 +57,12 @@ int main() {
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    //Rajvardhan Patil
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    ll n;
+    cin >> n;
 
-    Xor[1] = 1;
-    Or[1] = 1;
-
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    for (ll i = 0; i < n; i++) {
+        cout << "Dracarys" << endl;
     }
-
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
-    }
-
-
-
-    
 }

@@ -57,26 +57,51 @@ int main() {
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    //Rajvardhan Patil
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    ll n,d;
+    cin>>n>>d;
 
-    Xor[1] = 1;
-    Or[1] = 1;
+    vector<pair<ll,ll>> arr(n);
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    for(ll i =0; i<n; i++){
+        cin>>arr[i].first>>arr[i].second;
     }
 
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
+    vector<ll> a;
+
+    for(auto i : arr){
+        a.push_back(i.first);
+    }
+
+    sort(arr.begin(),arr.end());
+    sort(a.begin(),a.end());
+
+    vector<ll> pre(n,0);
+    pre[0] = arr[0].second;
+
+    for(ll i = 1; i<n; i++){
+        pre[i] += arr[i].second + pre[i-1];
     }
 
 
+    ll ans = 0;
 
-    
+    for(ll i = n-1; i>=0; i--){
+        ll ch = a[i] - d;
+
+        auto x = upper_bound(a.begin(),a.end(),ch);
+
+        ll ind = x - a.begin();
+
+        ll curr = pre[i] - pre[ind] + arr[ind].second;
+
+        ans = max(ans,curr);
+    }
+
+
+    cout<<ans<<endl;
+
+
+
 }

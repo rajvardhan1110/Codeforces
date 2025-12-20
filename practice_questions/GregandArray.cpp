@@ -57,26 +57,56 @@ int main() {
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    ll n, m, k;
+    cin >> n >> m >> k;
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    vector<ll> arr(n);
+    inputV(arr, n);
 
-    Xor[1] = 1;
-    Or[1] = 1;
+    vector<pair<pair<ll,ll>, ll>> op(m);
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    vector<ll> Add(n + 1, 0);
+    vector<ll> Del(n + 1, 0);
+
+    vector<ll> Addop(m + 1, 0);
+    vector<ll> Delop(m + 1, 0);
+
+    for (ll i = 0; i < m; i++) {
+        ll a, b, c;
+        cin >> a >> b >> c;
+        op[i] = {{a - 1, b - 1}, c};   
     }
 
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
+    // queries
+    for (ll i = 0; i < k; i++) {
+        ll a, b;
+        cin >> a >> b;
+        a--; b--;
+        Addop[a]++;
+        Delop[b]++;   
     }
 
+    ll opcnt = 0;
 
+    for (ll i = 0; i < m; i++) {
+        opcnt += Addop[i];
 
-    
+        ll l = op[i].first.first;
+        ll r = op[i].first.second;
+        ll d = op[i].second;
+
+        Add[l] += opcnt * d;
+        Del[r] += opcnt * d;
+
+        opcnt -= Delop[i];   
+    }
+
+    ll plus = 0;
+    for (ll i = 0; i < n; i++) {
+        plus += Add[i];
+        arr[i] += plus;
+        plus -= Del[i];
+    }
+
+    printV(arr);
 }

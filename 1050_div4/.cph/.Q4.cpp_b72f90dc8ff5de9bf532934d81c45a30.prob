@@ -1,0 +1,1 @@
+{"name":"Local: Q4","url":"/home/rajvardhan/codeforces/1050_div4/Q4.cpp","tests":[{"id":1757776611378,"input":"3\n3\n2 4 6\n4\n4 2 1 6\n4\n1000000000 999999999 1000000000 999999999\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/rajvardhan/codeforces/1050_div4/Q4.cpp","group":"local","local":true}

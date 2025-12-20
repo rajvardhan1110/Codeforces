@@ -49,34 +49,48 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    //Rajvardhan Patil
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    ll n,m;
+    cin>>n>>m;
 
-    Xor[1] = 1;
-    Or[1] = 1;
+    vector<pair<ll,ll>> arr(n+1);
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    arr[0].first = 0;
+    arr[0].second = 0;
+
+    for(ll i =1; i<n+1; i++){
+        cin>>arr[i].first>>arr[i].second;
+
     }
 
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
+    ll ans = 0;
+
+    for(ll i = 1; i<n+1; i++){
+        ll diff = arr[i].first - arr[i-1].first;
+
+        ll c = 0;
+
+        if(arr[i].second != arr[i-1].second){
+            c = 1;
+        }
+
+        if((diff % 2) == c){
+            ans += diff;
+        }else{
+            ans += diff -1;
+        }
     }
 
+    ans += (m-arr[n].first);
 
-
-    
+    cout<<ans<<endl;
 }

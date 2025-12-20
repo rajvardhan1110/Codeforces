@@ -49,34 +49,70 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    //Rajvardhan Patil
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    ll n;
+    cin>>n;
 
-    Xor[1] = 1;
-    Or[1] = 1;
+    vector<ll> arr(n);
+    inputV(arr,n);
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    vector<ll> left(n);
+    vector<ll> right(n);
+
+    left[0] = arr[0];
+    right[n-1] = arr[n-1];
+
+    // for(ll i = 1; i<n; i++){
+    //     left[i] = (arr[i] ^ left[i-1]);
+    // }
+
+    // for(ll i = n-2; i>=0; i--){
+    //     right[i] = (arr[i] ^ right[i+1]);
+    // }
+
+    // for(ll i = 0; i<n-1; i++){
+    //     if(left[i] == right[i+1]){
+    //         cout<<"YES"<<endl;
+    //         return;
+    //     }
+    // }
+
+    ll x = 0;
+
+    for(auto i : arr){
+        x = (x ^ i);
     }
 
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
+    if(x == 0){
+        cout<<"YES"<<endl;
+        return;
     }
 
+    ll k = 0;
+    ll cnt = 0;
 
+    for(ll i =0; i<n; i++){
+        k ^= arr[i];
 
-    
+        if(k == x){
+            k = 0;
+            cnt++;
+        }
+    }
+
+    if(cnt >= 2){
+        cout<<"YES"<<endl;
+        return;
+    }
+
+    cout<<"NO"<<endl;
 }

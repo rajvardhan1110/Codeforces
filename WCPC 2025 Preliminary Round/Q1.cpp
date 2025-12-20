@@ -3,6 +3,8 @@ using namespace std;
 
 using ll = long long;
 constexpr ll MOD = 1000000007; // 1e9 + 7
+ll MAXN = 2e6+1;   
+vector<bool> isPrime(MAXN, true);
 
 void inputV(vector<ll> &v, int size) {
     v.resize(size);
@@ -18,12 +20,12 @@ void printV(const vector<ll> &v) {
     cout << endl;
 }
 
-void createsieve(vector<bool> &prime, int n) {
-    prime[0] = prime[1] = false;
-    for (int i = 2; i * i < n; i++) {
-        if (prime[i]) {
-            for (int j = i * i; j < n; j += i) {
-                prime[j] = false;
+void createsieve() {
+    isPrime[0] = isPrime[1] = false;
+    for (int i = 2; i * i < MAXN; i++) {
+        if (isPrime[i]) {
+            for (int j = i * i; j < MAXN; j += i) {
+                isPrime[j] = false;
             }
         }
     }
@@ -49,34 +51,37 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    createsieve();
+
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    //Rajvardhan Patil
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    ll n;
+    cin>>n;
 
-    Xor[1] = 1;
-    Or[1] = 1;
+    vector<ll> arr(n);
+    inputV(arr,n);
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    ll ans = 0;
+
+    for(ll i = 0; i<n; i++){
+
+
+        for(ll j = i+1; j<n; j++){
+            ll sum = arr[i] + arr[j];
+
+            if(isPrime[sum]){
+                ans++;
+            }
+        }
     }
 
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
-    }
-
-
-
-    
+    cout<<ans<<endl;
 }

@@ -49,34 +49,73 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    //Rajvardhan Patil
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    ll n;
+    cin>>n;
 
-    Xor[1] = 1;
-    Or[1] = 1;
+    vector<ll> a(n);
+    vector<ll> b(n);
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    inputV(a,n);
+    inputV(b,n);
+
+    ll a0=0,a1=0,b0=0,b1=0;
+
+    for(auto i : a){
+        if(i == 0){
+            a0++;
+        }else{
+            a1++;
+        }
     }
 
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
+    for(auto i : b){
+        if(i == 0){
+            b0++;
+        }else{
+            b1++;
+        }
     }
 
+    //a1,b1
+
+    for(ll i = 0; i<n; i++){
+        if(a[i] != b[i]){
+
+            if(i&1){//m
+                if(b1&1){
+
+                }else{
+                    b1++;
+                    a1--;
+                }
+            }else{//a
+                if(a1&1){
+
+                }else{
+                    a1++;
+                    b1--;
+                }
+            }
 
 
-    
+        }
+    }
+
+    if((a1&1) && (b1&1) || (a1%2 == 0 && b1%2 == 0)){
+        cout<<"Tie"<<endl;
+    }else if(a1&1){
+        cout<<"Ajisai"<<endl;
+    }else{
+        cout<<"Mai"<<endl;
+    }
 }

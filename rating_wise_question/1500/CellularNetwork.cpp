@@ -57,26 +57,37 @@ int main() {
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    // Rajvardhan Patil
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    int n, m;
+    cin >> n >> m;
 
-    Xor[1] = 1;
-    Or[1] = 1;
+    vector<ll> city(n), tower(m);
+    inputV(city, n);
+    inputV(tower, m);
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    ll ans = 0;
+
+    for (ll c : city) {
+
+        
+        auto it = lower_bound(tower.begin(), tower.end(), c);
+
+        ll d = LLONG_MAX;
+
+        
+        if (it != tower.end()) {
+            d = min(d, llabs(*it - c));
+        }
+
+       
+        if (it != tower.begin()) {
+            it--;
+            d = min(d, llabs(*it - c));
+        }
+
+        ans = max(ans, d);
     }
 
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
-    }
-
-
-
-    
+    cout << ans << endl;
 }

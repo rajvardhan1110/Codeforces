@@ -49,34 +49,52 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    //Rajvardhan Patil
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    ll n;
+    cin>>n;
 
-    Xor[1] = 1;
-    Or[1] = 1;
+    vector<ll> arr(n);
+    inputV(arr,n);
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    vector<ll> o;
+
+    ll ans = 0;
+
+    for(auto i : arr){
+        if(i&1){
+            o.push_back(i);
+        }else{
+            ans += i;
+        }
     }
 
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
+    if(o.size() == 0){
+        cout<<0<<endl;
+        return;
     }
 
+    sort(o.rbegin(),o.rend());
+
+    ll upto = o.size()/2;
+    if(o.size() % 2 == 1){
+        upto++;
+    }
+
+    for(ll i =0; i<upto; i++){
+        ans += o[i];
+    }
+
+    cout<<ans<<endl;
 
 
-    
+
 }

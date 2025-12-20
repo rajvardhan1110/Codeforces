@@ -43,6 +43,22 @@ ll binExpRecur(ll a, ll b) {
     }
 }
 
+bool check(ll mid, ll div, ll upto) {
+    ll sum = 0;
+    ll power = 1; 
+
+    while (power <= mid) {
+        sum += mid / power;
+        if (sum >= upto) return true;
+
+        if (power > LLONG_MAX / div) break; 
+        power *= div;
+    }
+
+    return sum >= upto;
+}
+
+
 void solve();
 
 int main() {
@@ -57,26 +73,28 @@ int main() {
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    //Rajvardhan Patil
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    ll n,m;
+    cin>>n>>m;
 
-    Xor[1] = 1;
-    Or[1] = 1;
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    ll i = 1; 
+    ll j = n;
+
+    ll ans = n;
+
+    while(i <= j){
+        ll mid = (i+j) / 2;
+
+        if(check(mid,m,n)){
+            ans = mid;
+            j = mid - 1;
+        }else{
+            i = mid+1;
+        }
     }
 
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
-    }
+    cout<<ans<<endl;
 
-
-
-    
 }

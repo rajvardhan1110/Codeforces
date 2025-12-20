@@ -43,6 +43,39 @@ ll binExpRecur(ll a, ll b) {
     }
 }
 
+ll solve2(map<pair<ll,ll>,ll>& mp,vector<ll>& t,vector<ll>& h,ll ind,ll prev){
+    if(ind >= t.size()){
+        return 0;
+    }
+
+    if(mp.count({ind,prev})){
+        return mp[{ind,prev}];
+    }
+
+    ll ans = 0;
+
+
+    //standing
+
+    ans =max(ans,solve2(mp,t,h,ind+1,t[ind]));
+
+    //left
+    if(t[ind] - h[ind] > prev){
+        ans =max(ans,1+solve2(mp,t,h,ind+1,t[ind]));
+    }
+
+    //right
+    if(ind == (t.size()-1) || t[ind] + h[ind] < t[ind+1]){
+        ans =max(ans,1+solve2(mp,t,h,ind+1,t[ind]+h[ind]));
+    }
+
+    mp[{ind,prev}] = ans;
+
+    return ans;
+}
+
+
+
 void solve();
 
 int main() {
@@ -57,26 +90,19 @@ int main() {
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    //Rajvardhan Patil
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    ll n;
+    cin>>n;
 
-    Xor[1] = 1;
-    Or[1] = 1;
+    vector<ll> t(n);
+    vector<ll> h(n);
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    for(int i=0; i<n; i++){
+        cin>>t[i]>>h[i];
     }
 
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
-    }
+    map<pair<ll,ll>,ll> mp;
 
-
-
-    
+    cout<<solve2(mp,t,h,0,LLONG_MIN)<<endl;
 }

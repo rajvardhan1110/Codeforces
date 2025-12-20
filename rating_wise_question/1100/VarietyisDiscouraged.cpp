@@ -49,34 +49,44 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    ll n;
+    cin >> n;
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    vector<ll> arr(n);
+    inputV(arr, n);
 
-    Xor[1] = 1;
-    Or[1] = 1;
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    unordered_map<ll, ll> freq;
+    for (ll x : arr) freq[x]++;
+
+    ll bestLen = 0, currLen = 0;
+    ll bestL = -1, bestR = -1;
+
+    for (int i = 0; i < n; i++) {
+        if (freq[arr[i]] == 1) {
+            currLen++;
+            if (currLen > bestLen) {
+                bestLen = currLen;
+                bestR = i;
+                bestL = i - currLen + 1;
+            }
+        } else {
+            currLen = 0;
+        }
     }
 
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
+    if (bestLen == 0) {
+        cout << 0<<endl; 
+    } else {
+      
+        cout << bestL+1 << " " << bestR+1 << "\n";
     }
-
-
-
-    
 }

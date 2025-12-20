@@ -57,26 +57,63 @@ int main() {
 }
 
 void solve() {
-   
-    ll n = 62;
-    // cin>>n;
+    //Rajvardhan Patil
 
-    vector<ll> Xor(n+1,0);
-    vector<ll> Or(n+1,0);
+    ll n,m;
 
-    Xor[1] = 1;
-    Or[1] = 1;
+    cin>>n>>m;
 
-    for(ll i = 2; i<=n; i++){
-        Xor[i] = Xor[i-1] ^ i;
-        Or[i] = Or[i-1] | i;
+    string s;
+    cin>>s;
+
+    ll a = 0;
+    ll b = 0;
+
+    ll i = 0; 
+    ll j = 0;
+
+    ll ans = INT_MIN;
+
+    while(j < n){
+
+        if(s[j] == 'a'){
+            a++;
+        }
+
+        while(a > m){
+            if(s[i] == 'a'){
+                a--;
+            }
+
+            i++;
+        }
+
+        ans = max(ans,j-i+1);
+        j++;
+
     }
 
-    for(ll i = 1; i<=n; i++){
-        cout<<i<<"->"<<Xor[i]<<" "<<Or[i]<<endl;
+    i = 0;
+    j = 0;
+
+    while(j < n){
+
+        if(s[j] == 'b'){
+            b++;
+        }
+
+        while(b > m){
+            if(s[i] == 'b'){
+                b--;
+            }
+
+            i++;
+        }
+
+        ans = max(ans,j-i+1);
+        j++;
+
     }
 
-
-
-    
+    cout<<ans<<endl;
 }

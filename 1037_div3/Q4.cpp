@@ -124,7 +124,7 @@ void solve()
     sort(arr.begin(), arr.end());
 
     for(ll i = 0;i<n; i++){
-        if(arr[i].first.first <= ans && arr[i].first.second){
+        if(arr[i].first.first <= ans){
             if(arr[i].second > ans){
                 ans = arr[i].second;
             }

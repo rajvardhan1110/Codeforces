@@ -1,0 +1,1 @@
+{"name":"Local: CellularNetwork","url":"/home/rajvardhan/codeforces/rating_wise_question/1500/CellularNetwork.cpp","tests":[{"id":1765434112286,"input":"3 2\n-2 2 4\n-3 0\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/rajvardhan/codeforces/rating_wise_question/1500/CellularNetwork.cpp","group":"local","local":true}
