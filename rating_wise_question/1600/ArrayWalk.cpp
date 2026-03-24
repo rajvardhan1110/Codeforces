@@ -1,0 +1,87 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+constexpr ll MOD = 1000000007; // 1e9 + 7
+
+void inputV(vector<ll> &v, int size) {
+    v.resize(size);
+    for (int i = 0; i < size; i++) {
+        cin >> v[i];
+    }
+}
+
+void printV(const vector<ll> &v) {
+    for (ll val : v) {
+        cout << val << " ";
+    }
+    cout << endl;
+}
+
+void createsieve(vector<bool> &prime, int n) {
+    prime[0] = prime[1] = false;
+    for (int i = 2; i * i < n; i++) {
+        if (prime[i]) {
+            for (int j = i * i; j < n; j += i) {
+                prime[j] = false;
+            }
+        }
+    }
+}
+
+bool PowOfTwo(ll n) {
+    return n > 0 && (n & (n - 1)) == 0;
+}
+
+ll binExpRecur(ll a, ll b) {
+    if (b == 0) return 1;
+    ll res = binExpRecur(a, b / 2);
+    if (b & 1) {
+        return (a * ((res * res) % MOD)) % MOD;
+    } else {
+        return (res * res) % MOD;
+    }
+}
+
+void solve();
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+}
+
+void solve() {
+    //Rajvardhan Patil
+
+    ll n,k,z;
+    cin>>n>>k>>z;
+
+    vector<ll>a(n+1);
+    for(ll i=1;i<=n;i++) cin>>a[i];
+
+    vector<ll>pref(n+1);
+    for(ll i=1;i<=n;i++) pref[i]=pref[i-1]+a[i];
+
+    ll ans=0;
+    ll maxPair=0;
+
+    for(ll i=1;i<=k+1;i++){
+        if(i+1<=n) maxPair=max(maxPair,a[i]+a[i+1]);
+
+        ll rem=k-(i-1);
+        if(rem<0) break;
+
+        ll L=min(z,rem/2);
+
+        ll score=pref[i]+L*maxPair;
+        ans=max(ans,score);
+    }
+
+    cout<<ans<<endl;
+}

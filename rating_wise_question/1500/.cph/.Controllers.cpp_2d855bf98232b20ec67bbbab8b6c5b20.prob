@@ -1,0 +1,1 @@
+{"name":"Local: Controllers","url":"/home/rajvardhan/codeforces/rating_wise_question/1500/Controllers.cpp","tests":[{"id":1770654846077,"input":"8\n+-+---+-\n5\n2 1\n10 3\n7 9\n10 10\n5 3\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/rajvardhan/codeforces/rating_wise_question/1500/Controllers.cpp","group":"local","local":true}

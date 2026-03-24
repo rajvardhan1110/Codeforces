@@ -1,0 +1,99 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+constexpr ll MOD = 1000000007; // 1e9 + 7
+
+void inputV(vector<ll> &v, int size) {
+    v.resize(size);
+    for (int i = 0; i < size; i++) {
+        cin >> v[i];
+    }
+}
+
+void printV(const vector<ll> &v) {
+    for (ll val : v) {
+        cout << val << " ";
+    }
+    cout << endl;
+}
+
+void createsieve(vector<bool> &prime, int n) {
+    prime[0] = prime[1] = false;
+    for (int i = 2; i * i < n; i++) {
+        if (prime[i]) {
+            for (int j = i * i; j < n; j += i) {
+                prime[j] = false;
+            }
+        }
+    }
+}
+
+bool PowOfTwo(ll n) {
+    return n > 0 && (n & (n - 1)) == 0;
+}
+
+ll binExpRecur(ll a, ll b) {
+    if (b == 0) return 1;
+    ll res = binExpRecur(a, b / 2);
+    if (b & 1) {
+        return (a * ((res * res) % MOD)) % MOD;
+    } else {
+        return (res * res) % MOD;
+    }
+}
+
+void solve();
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t = 1;
+    // cin >> t;
+    while (t--) {
+        solve();
+    }
+}
+
+void solve() {
+
+    ll n,a,b,c,d;
+    ll th,k;
+
+
+    cin>>n>>a>>b>>c>>d;
+    cin>>th>>k;
+
+    ll x = a-c;
+    ll y = d-b;
+
+    ll dist = ((x*x) + (y*y));
+
+    if(th == 0){
+        if(a == c && b == d){
+            cout<<"YES"<<endl;
+            return;
+        }else{
+            cout<<"NO"<<endl;
+            return;
+        }
+    }else if(th == 180){
+        ll maxDist = 2 * n * k;  
+        if(dist <= maxDist * maxDist){
+            cout << "YES"<<endl;
+        } else {
+            cout << "NO"<<endl;
+        }
+        return;
+    }
+    else if(th == 60){
+       ll maxDist =  n * k;  
+        if(dist <= maxDist * maxDist){
+            cout << "YES"<<endl;
+        } else {
+            cout << "NO"<<endl;
+        }
+        return;
+    }
+}
