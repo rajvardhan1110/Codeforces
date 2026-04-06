@@ -49,18 +49,67 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-   cout<<92136<<endl;
+    //Rajvardhan Patil
+
+    ll x,y;
+    cin>>x>>y;
+
+
+    ll tot = x+y;
+    bool reven = (tot%2 == 0);
+
+    if(reven){
+        if(y < x-1 || x < 1){
+            cout<<"NO"<<endl;
+            return;
+        }
+    }else{
+        if(y < x+1){
+            cout<<"NO"<<endl;
+            return;
+        }
+    }
+
+    ll curr = 2;
+    cout<<"YES"<<endl;
+
+
+    if(reven){
+        
+        for(ll i = 0; i<x-1; i++){
+            cout<<1<<" "<<curr<<endl;
+            cout<<curr<<" "<<curr+1<<endl;
+            curr += 2;
+        }
+
+        while(curr <= tot){
+            cout<<1<<" "<<curr<<endl;
+            curr++;
+        }
+
+    }else{
+
+        for(ll i = 0; i<x; i++){
+            cout<<1<<" "<<curr<<endl;
+            cout<<curr<<" "<<curr+1<<endl;
+            curr += 2;
+        }
+
+        while(curr <= tot){
+            cout<<1<<" "<<curr<<endl;
+            curr++;
+        }
+
+    }
 
 
 
-    
 }

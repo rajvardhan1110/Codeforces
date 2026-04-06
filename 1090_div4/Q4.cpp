@@ -4,9 +4,25 @@ using namespace std;
 using ll = long long;
 constexpr ll MOD = 1000000007; // 1e9 + 7
 
-void inputV(vector<ll> &v, int size) {
+vector<ll> primes; 
+
+void generate_primes(ll limit) {
+    vector<bool> is_prime(limit + 1, true);
+    is_prime[0] = is_prime[1] = false;
+
+    for (ll i = 2; i <= limit; i++) {
+        if (is_prime[i]) {
+            primes.push_back(i);
+            for (ll j = i * 2; j <= limit; j += i) {
+                is_prime[j] = false;
+            }
+        }
+    }
+}
+
+void inputV(vector<ll> &v, ll size) {
     v.resize(size);
-    for (int i = 0; i < size; i++) {
+    for (ll i = 0; i < size; i++) {
         cin >> v[i];
     }
 }
@@ -18,11 +34,11 @@ void printV(const vector<ll> &v) {
     cout << endl;
 }
 
-void createsieve(vector<bool> &prime, int n) {
+void createsieve(vector<bool> &prime, ll n) {
     prime[0] = prime[1] = false;
-    for (int i = 2; i * i < n; i++) {
+    for (ll i = 2; i * i < n; i++) {
         if (prime[i]) {
-            for (int j = i * i; j < n; j += i) {
+            for (ll j = i * i; j < n; j += i) {
                 prime[j] = false;
             }
         }
@@ -49,18 +65,27 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    ll t;
+    cin >> t;
+    generate_primes(200000);
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-   cout<<92136<<endl;
+    //Rajvardhan Patil
 
+    ll n;
+    cin >> n;
 
+    vector<ll> arr(n);
 
-    
+    arr[0] = primes[0];
+
+    for (ll i = 1; i < n; i++) {
+        arr[i] = primes[i - 1] * primes[i];
+    }
+
+    printV(arr);
 }

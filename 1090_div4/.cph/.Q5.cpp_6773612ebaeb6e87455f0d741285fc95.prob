@@ -1,0 +1,1 @@
+{"name":"Local: Q5","url":"/home/rajvardhan/codeforces/1090_div4/Q5.cpp","tests":[{"id":1775315392496,"input":"3\n2\n67 67\n3\n1 2 3\n10\n67 667 167 867 267 467 367 567 767 967\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/rajvardhan/codeforces/1090_div4/Q5.cpp","group":"local","local":true}

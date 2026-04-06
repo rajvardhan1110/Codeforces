@@ -49,18 +49,30 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-   cout<<92136<<endl;
+    //Rajvardhan Patil
 
+    ll n;
+    cin>>n;
 
+    vector<ll> arr(n);
 
-    
+    inputV(arr,n);
+
+    ll ans = 0;
+
+    for(ll i = 0; i<n; i++){
+        for(ll j = i+1; j<n; j++){
+            ans = max(ans,arr[i]^arr[j]);
+        }
+    }
+
+    cout<<ans<<endl;
 }

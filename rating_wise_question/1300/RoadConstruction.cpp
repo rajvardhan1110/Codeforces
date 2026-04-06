@@ -57,10 +57,35 @@ int main() {
 }
 
 void solve() {
-   
-   cout<<92136<<endl;
+    //Rajvardhan Patil
+
+    ll n,m;
+    cin>>n>>m;
+
+    vector<ll> arr(n+1,0);
+
+    for(ll i=0; i<m; i++){
+        ll a,b;
+        cin>>a>>b;
 
 
+        arr[a]++;
+        arr[b]++;
+    }
 
-    
+    ll center = -1;
+
+    for(ll i = 1; i<=n; i++){
+        if(arr[i] == 0){
+            center = i;
+            break;
+        }
+    }
+
+    cout<<n-1<<endl;
+    for(ll i = 1; i<=n; i++){
+        if(i != center){
+            cout<<i<<" "<<center<<endl;
+        }
+    }
 }

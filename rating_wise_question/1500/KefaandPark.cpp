@@ -43,6 +43,25 @@ ll binExpRecur(ll a, ll b) {
     }
 }
 
+void dfs(ll curr, ll parent, vector<vector<ll>> &adj, ll &ans, ll &m, vector<ll> &isCat, ll currC) {
+    
+    if(isCat[curr]) currC++;
+    else currC = 0;
+
+    if(currC > m) return;
+
+    bool isLeaf = true;
+
+    for(auto child : adj[curr]){
+        if(child != parent){
+            isLeaf = false;
+            dfs(child, curr, adj, ans, m, isCat, currC);
+        }
+    }
+
+    if(isLeaf && currC <= m) ans++;
+}
+
 void solve();
 
 int main() {
@@ -57,10 +76,30 @@ int main() {
 }
 
 void solve() {
-   
-   cout<<92136<<endl;
+    //Rajvardhan Patil
 
+    ll n,m;
+    cin>>n>>m;
 
+    vector<ll> isCat(n);
+    inputV(isCat,n);
 
-    
+    vector<vector<ll>> adj(n);
+
+    for(ll i = 0; i<n-1; i++){
+        ll a,b;
+        cin>>a>>b;
+        a--;
+        b--;
+
+        adj[a].push_back(b);
+        adj[b].push_back(a);
+    }
+
+    ll ans = 0;
+  
+
+    dfs(0,-1,adj,ans,m,isCat,0);
+
+    cout<<ans<<endl;
 }

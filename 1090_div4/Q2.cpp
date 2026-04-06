@@ -49,18 +49,31 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         solve();
     }
 }
 
 void solve() {
-   
-   cout<<92136<<endl;
+    //Rajvardhan Patil
 
+    ll n = 7;
+    vector<ll> arr(n);
+    inputV(arr,n);
 
+    sort(arr.begin(),arr.end());
 
-    
+    for(ll i = 0; i<6; i++){
+        arr[i] = -arr[i];
+    }
+
+    ll sum = 0;
+
+    for(auto i : arr){
+        sum += i;
+    }
+
+    cout<<sum<<endl;
 }

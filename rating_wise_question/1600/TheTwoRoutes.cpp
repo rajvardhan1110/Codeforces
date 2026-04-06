@@ -57,10 +57,54 @@ int main() {
 }
 
 void solve() {
-   
-   cout<<92136<<endl;
+    ll n, m;
+    cin >> n >> m;
 
+    vector<vector<bool>> rail(n + 1, vector<bool>(n + 1, false));
 
+    for (ll i = 0; i < m; i++) {
+        ll u, v;
+        cin >> u >> v;
+        rail[u][v] = rail[v][u] = true;
+    }
 
-    
+    bool useRoad = rail[1][n];
+
+    vector<vector<ll>> adj(n + 1);
+
+    for (ll i = 1; i <= n; i++) {
+        for (ll j = i + 1; j <= n; j++) {
+            if (useRoad) {
+                if (!rail[i][j]) {
+                    adj[i].push_back(j);
+                    adj[j].push_back(i);
+                }
+            } else {
+                if (rail[i][j]) {
+                    adj[i].push_back(j);
+                    adj[j].push_back(i);
+                }
+            }
+        }
+    }
+
+    vector<ll> dist(n + 1, -1);
+    queue<ll> q;
+
+    dist[1] = 0;
+    q.push(1);
+
+    while (!q.empty()) {
+        ll u = q.front(); 
+        q.pop();
+
+        for (ll v : adj[u]) {
+            if (dist[v] == -1) {
+                dist[v] = dist[u] + 1;
+                q.push(v);
+            }
+        }
+    }
+
+    cout << dist[n] << endl; 
 }

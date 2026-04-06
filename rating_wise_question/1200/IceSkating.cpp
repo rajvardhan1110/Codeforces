@@ -2,7 +2,7 @@
 using namespace std;
 
 using ll = long long;
-constexpr ll MOD = 1000000007; // 1e9 + 7
+constexpr ll MOD = 1000000007;
 
 void inputV(vector<ll> &v, int size) {
     v.resize(size);
@@ -43,7 +43,41 @@ ll binExpRecur(ll a, ll b) {
     }
 }
 
-void solve();
+int n;
+vector<pair<int,int>> v;
+vector<bool> vis;
+
+void dfs(int i) {
+    vis[i] = true;
+    for (int j = 0; j < n; j++) {
+        if (!vis[j]) {
+            if (v[i].first == v[j].first || v[i].second == v[j].second) {
+                dfs(j);
+            }
+        }
+    }
+}
+
+void solve() {
+    cin >> n;
+    v.resize(n);
+    vis.assign(n, false);
+
+    for (int i = 0; i < n; i++) {
+        cin >> v[i].first >> v[i].second;
+    }
+
+    int components = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (!vis[i]) {
+            dfs(i);
+            components++;
+        }
+    }
+
+    cout << components - 1 << endl;
+}
 
 int main() {
     ios::sync_with_stdio(false);
@@ -54,13 +88,4 @@ int main() {
     while (t--) {
         solve();
     }
-}
-
-void solve() {
-   
-   cout<<92136<<endl;
-
-
-
-    
 }
