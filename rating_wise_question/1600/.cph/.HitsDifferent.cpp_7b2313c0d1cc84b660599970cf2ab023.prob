@@ -1,0 +1,1 @@
+{"name":"Local: HitsDifferent","url":"/home/rajvardhan/codeforces/rating_wise_question/1600/HitsDifferent.cpp","tests":[{"id":1775826642857,"input":"10\n9\n1\n2\n3\n4\n5\n6\n10\n1434\n1000000\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/rajvardhan/codeforces/rating_wise_question/1600/HitsDifferent.cpp","group":"local","local":true}
